@@ -39,6 +39,13 @@ class Track extends React.Component {
                     <p>
                         {this.props.track.artist} | {this.props.track.album}
                     </p>
+                    <audio controls>
+                        <source
+                            src={this.props.track.preview_url}
+                            type="audio/mpeg"
+                        />
+                        Your browser does not support the audio element.
+                    </audio>
                 </div>
                 {this.renderAction()}
             </div>
