@@ -1,6 +1,6 @@
 let accessToken;
 const clientId = "5e704f782f7d433681e0d0d76012b969";
-const redirectUri = "http://localhost:3000/";
+const redirectUri = "http://erect-twig.surge.sh";
 
 const Spotify = {
     getAccessToken() {
@@ -24,7 +24,9 @@ const Spotify = {
     search(term) {
         const accessToken = Spotify.getAccessToken();
         const headers = {
-            headers: { Authorization: `Bearer ${accessToken}` },
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
         };
         return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
             headers: headers,
