@@ -1,6 +1,7 @@
 let accessToken;
 const clientId = "5e704f782f7d433681e0d0d76012b969";
-const redirectUri = "http://erect-twig.surge.sh";
+// const redirectUri = "http://erect-twig.surge.sh";
+const redirectUri = "http://localhost:3000";
 
 const Spotify = {
     getAccessToken() {
@@ -23,11 +24,7 @@ const Spotify = {
     },
     search(term) {
         const accessToken = Spotify.getAccessToken();
-        const headers = {
-            headers: {
-                Authorization: `Bearer ${accessToken}`,
-            },
-        };
+        const headers = { Authorization: `Bearer ${accessToken}` };
         return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
             headers: headers,
         })
@@ -38,7 +35,7 @@ const Spotify = {
                 if (!jsonResponse.tracks) return [];
                 return jsonResponse.tracks.items.map((track) => ({
                     id: track.id,
-                    name: track.id,
+                    name: track.name,
                     artist: track.artists[0].name,
                     album: track.album.name,
                     uri: track.uri,
@@ -48,9 +45,7 @@ const Spotify = {
     savePlaylist(name, trackUris) {
         if (!name || !trackUris.length) return;
         const accessToken = Spotify.getAccessToken();
-        const headers = {
-            headers: { Authorization: `Bearer ${accessToken}` },
-        };
+        const headers = { Authorization: `Bearer ${accessToken}` };
         let userId;
         return fetch(`https://api.spotify.com/v1/me`, { headers: headers })
             .then((res) => {
