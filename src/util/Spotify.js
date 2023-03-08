@@ -1,7 +1,7 @@
 let accessToken;
 const clientId = "5e704f782f7d433681e0d0d76012b969";
-// const redirectUri = "http://erect-twig.surge.sh";
-const redirectUri = "http://localhost:3000";
+const redirectUri = "http://erect-twig.surge.sh";
+// const redirectUri = "http://localhost:3000";
 
 const Spotify = {
     getAccessToken() {
