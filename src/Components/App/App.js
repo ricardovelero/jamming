@@ -47,6 +47,13 @@ class App extends React.Component {
     }
     search(term) {
         Spotify.search(term).then((results) => {
+            for (let i = 0; i < results.length; ++i) {
+                for (let j = 0; j < this.state.playlistTracks.length; ++j) {
+                    if (results[i].id === this.state.playlistTracks[j].id) {
+                        results.splice(i, 1);
+                    }
+                }
+            }
             this.setState({ searchResults: results });
         });
     }
