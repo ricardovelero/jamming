@@ -1,7 +1,7 @@
 let accessToken;
 const clientId = "5e704f782f7d433681e0d0d76012b969";
-const redirectUri = "http://erect-twig.surge.sh";
-// const redirectUri = "http://localhost:3000";
+// const redirectUri = "http://erect-twig.surge.sh";
+const redirectUri = "http://localhost:3000";
 
 const Spotify = {
     getAccessToken() {
@@ -39,6 +39,7 @@ const Spotify = {
                     artist: track.artists[0].name,
                     album: track.album.name,
                     uri: track.uri,
+                    preview_url: track.preview_url,
                 }));
             });
     },
